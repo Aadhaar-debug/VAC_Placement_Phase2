@@ -1,0 +1,32 @@
+N = 4
+
+def printSolution(board):
+    for row in board:
+        print(' '.join("Q" if x else "." for x in row))
+
+def isSafe(board, row, col):
+    # Check row on the left
+    if any(board[row][:col]):
+        return False
+
+    # Check upper diagonal on left
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j]:
+            return False
+
+    # Check lower diagonal on left
+    for i, j in zip(range(row, N), range(col, -1, -1)):
+        if board[i][j]:
+            return False
+
+    return True
+
+def solveNQUtil(board, col):
+    return True if col >= N else any((board[row][col], True)[1] if isSafe(board, row, col) and solveNQUtil(board, col + 1) else False for row in range(N))
+
+def solveNQ():
+    board = [[0] * N for _ in range(N)]
+    
+    printSolution(board) if solveNQUtil(board, 0) else print("Solution does not exist")
+
+solveNQ()

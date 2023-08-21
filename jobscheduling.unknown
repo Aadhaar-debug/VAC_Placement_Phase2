@@ -1,0 +1,20 @@
+def schd(jobs, deadline):
+    jobs = sorted(jobs, key=lambda x: x[2], reverse=True)
+    slots = [-1] * deadline
+    
+    finalProfit = 0
+    
+    for job in jobs:
+        for j in range(min(deadline-1, job[1]-1), -1, -1):
+            if slots[j] == -1:
+                slots[j] = job[0]
+                finalProfit += job[2]
+                break
+                
+    return finalProfit, slots
+
+jobs = [['J1', 3, 15], ['J2', 3, 30], ['J3', 2, 5], ['J4', 1, 25], ['J5', 2, 10]]
+deadline = 3
+profit, jobOrder = schd(jobs, deadline)
+print("Total Profit:", profit)
+print("Job Order:", jobOrder)

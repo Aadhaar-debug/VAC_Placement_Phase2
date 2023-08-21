@@ -1,0 +1,15 @@
+import math
+
+def egyptianFraction(nr, dr):
+    print(f"The Egyptian Fraction Representation of {nr}/{dr} is:", end="\n")
+    ef = []
+
+    while nr != 0:
+        x = math.ceil(dr / nr)
+        ef.append(x)
+        nr = x * nr - dr
+        dr = dr * x
+
+    print(" + ".join(f"1/{x}" for x in ef))
+
+egyptianFraction(6, 14)

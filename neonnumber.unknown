@@ -1,0 +1,5 @@
+def is_neon(num):
+    return sum(int(digit) for digit in str(num * num)) == num
+
+num = int(input("Enter number: "))
+print(f"{num} is a neon number." if is_neon(num) else f"{num} is not a neon number." if 1 <= num <= 100 else "Please enter a number between 1 and 100.")

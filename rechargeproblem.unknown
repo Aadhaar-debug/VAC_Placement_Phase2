@@ -1,0 +1,19 @@
+total_days = 84
+daily_data_limit = 2
+daily_msg_limit = 100
+total_call_limit = 3000
+calls_made = 0
+current_day = 0
+while current_day < total_days:
+    day = int(input("current day: "))
+    print("Your plan is expired please recharge") if day <= 0 or day > 84 else None
+    current_day = day
+    data_used = float(input("today data used:"))
+    msgs_sent = int(input("messages sent today:"))
+    calls_today = int(input("calls made today: "))
+    print("Daily data limit exceeded!") if data_used > daily_data_limit else print(f"Data remaining for today: {daily_data_limit - data_used}GB")
+    print("Daily message limit exceeded!") if msgs_sent > daily_msg_limit else print(f"Messages remaining for today: {daily_msg_limit - msgs_sent}")
+    calls_made += calls_today
+    print("Total call limit for the plan exceeded!") if calls_made > total_call_limit else print(f"Call limit remaining: {total_call_limit - calls_made}")
+    print(f"Plan will expire in: {total_days - day}\n")
+print("Recharge plan expired")

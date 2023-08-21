@@ -1,0 +1,10 @@
+def reverseStr(s):
+    reverseAlpha = [c for c in s if c.isalpha()][::-1]
+    result = []
+    idx = 0
+    for char in s:
+        result.append(reverseAlpha[idx]) if char.isalpha() else result.append(char)
+        idx += 1 if char.isalpha() else 0
+    return ''.join(result)
+string = "*?* hello baby* ?!"
+print(reverseStr(string)

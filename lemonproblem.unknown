@@ -1,0 +1,10 @@
+lemons_input = input("Enter the number of lemons: ")
+
+result = (
+    "Enter valid value" if not lemons_input.isdigit() or int(lemons_input) < 0 else 
+    "Less than 21 lemons" if int(lemons_input) < 21 else 
+    "Exactly 21 lemons" if int(lemons_input) == 21 else 
+    "More than 21 lemons"
+)
+
+print(result)

@@ -1,0 +1,32 @@
+def isLeap(year):
+    return True if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0 else False
+
+def week(w):
+    return {
+        0: "Saturday",
+        1: "Sunday",
+        2: "Monday",
+        3: "Tuesday",
+        4: "Wednesday",
+        5: "Thursday",
+        6: "Friday",
+    }[w]
+
+def result(day, month, year):
+    if not isValidDate(day, month, year):
+        print("Invalid Date")
+        return
+    year = year - 1 if month in [1, 2] else year
+    month = 13 if month == 1 else 14 if month == 2 else month    
+    k = day
+    m = month
+    d = year % 100
+    c = year // 100
+    w = k + 13 * (m + 1) // 5 + d + d // 4 + c // 4 - 2 * c
+    w = w % 7
+    print(week(w))
+
+def isValidDate(day, month, year):
+    return False if day <= 0 or month <= 0 or month > 12 or year < 1900 or year > 3000 else (day <= (29 if isLeap(year) else 28) if month == 2 else day <= 30 if month in [4, 6, 9, 11] else 1 <= day <= 31)
+
+result(-2, 2, 200)

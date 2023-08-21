@@ -1,0 +1,31 @@
+def string(s):
+    total = 0
+    chars_list = []
+
+    for char in s:
+        total += int(char) if '0' <= char <= '9' else 0
+        if not '0' <= char <= '9':
+            chars_list.append(char)
+    chars = ''.join(chars_list)
+
+    while total > 9:
+        total = sum(int(d) for d in str(total))
+        
+    return chars, total
+
+#another method
+
+def string(s):
+    total, chars = 0, ""
+    for char in s:
+        total += int(char) if '0' <= char <= '9' else 0
+        chars += char if not '0' <= char <= '9' else ""
+
+    while total > 9:
+        total = sum(int(d) for d in str(total))
+    return chars, total
+
+s = "jammu20kashmir21"
+result = string(s)
+print(result[0]) 
+print(result[1]) 
