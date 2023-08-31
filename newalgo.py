@@ -11,6 +11,7 @@ def miet(i , j):
     if (a[i] == '\0' || b[j] == '\0') 
     {
             return 0
+            
         else:
             a([i]+b[j]):
                 return 1+miet(i+1 , j+1)
